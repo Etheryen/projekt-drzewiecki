@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useWindowSize } from "rooks";
 
 export default function Home() {
   // TODO: CUSTOM FONT, BG COLOR, TEXT COLOR
@@ -41,18 +42,20 @@ export default function Home() {
 function HorizontalScroll() {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
-  console.log(scrollYProgress.get());
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+
+  const x = useTransform(scrollYProgress, [0, 1], ["0", `-200%`]);
+  const imageRef = useRef<HTMLImageElement | null>(null);
 
   return (
-    <section ref={targetRef} className="relative h-[8425px]">
+    <section ref={targetRef} className={`relative h-[300vw]`}>
       <div className="sticky top-0 h-screen overflow-hidden">
-        <motion.div style={{ x }} className="sticky block">
-          <div className="flex h-screen w-screen items-center justify-center overflow-hidden">
+        <motion.div style={{ x }} className="sticky">
+          <div className="relative h-screen w-[300vw]">
             <Image
-              src={"/timeline_beztla_light.png"}
+              src="/timeline_beztla_light.png"
               alt="Życie Piotra Drzewieckiego"
-              className="h-full w-auto object-none"
+              ref={imageRef}
+              className="h-screen"
               priority
               loading="eager"
               height={2000}
