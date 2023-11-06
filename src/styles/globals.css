@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Book Antiqua";
+    src: url("/Book-Antiqua.ttf") format("truetype");
+  }
+
+  html {
+    font-family: "Book Antiqua", sans-serif;
+  }
+}

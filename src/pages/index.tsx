@@ -18,9 +18,9 @@ export default function Home() {
         {/* TODO: favicon zmienić */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col scroll-smooth bg-[#373737] text-white supports-[height:100dvh]:min-h-[100dvh]">
+      <main className="flex min-h-screen flex-col scroll-smooth bg-neutral-800 text-white supports-[height:100dvh]:min-h-[100dvh]">
         <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-6 px-4 py-16 supports-[height:100dvh]:h-[100dvh] lg:flex-row lg:gap-12">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
+          <h1 className="text-5xl font-bold sm:text-[6rem]">
             Piotr Drzewiecki
           </h1>
           <Image
