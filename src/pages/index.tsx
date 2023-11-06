@@ -19,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col scroll-smooth bg-[#373737] text-white supports-[height:100dvh]:min-h-[100dvh]">
-        <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-6 px-4 py-16 lg:flex-row lg:gap-12">
+        <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-6 px-4 py-16 supports-[height:100dvh]:h-[100dvh] lg:flex-row lg:gap-12">
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
             Piotr Drzewiecki
           </h1>
@@ -33,33 +33,70 @@ export default function Home() {
             className="rounded-xl border-4 border-white"
           />
         </div>
-        <HorizontalScroll />
+        <CalculateProportions />
       </main>
     </>
   );
 }
 
-function HorizontalScroll() {
+const ACTUAL_IMAGE_WIDTH = 26000;
+const ACTUAL_IMAGE_HEIGHT = 4237;
+
+function CalculateProportions() {
+  const { innerHeight, innerWidth } = useWindowSize();
+  const [imageWidth, setImageWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (innerHeight) {
+      setImageWidth((innerHeight * ACTUAL_IMAGE_WIDTH) / ACTUAL_IMAGE_HEIGHT);
+    }
+  }, [innerHeight]);
+
+  if (!imageWidth || !innerWidth) return null;
+
+  return <HorizontalScroll imageWidth={imageWidth} innerWidth={innerWidth} />;
+}
+
+interface HorizontalScrollProps {
+  imageWidth: number;
+  innerWidth: number;
+}
+
+function HorizontalScroll({ imageWidth, innerWidth }: HorizontalScrollProps) {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0", `-200%`]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0", `-${imageWidth - innerWidth}px`],
+  );
   const imageRef = useRef<HTMLImageElement | null>(null);
 
   return (
-    <section ref={targetRef} className={`relative h-[300vw]`}>
-      <div className="sticky top-0 h-screen overflow-hidden">
+    <section
+      ref={targetRef}
+      style={{ height: imageWidth }}
+      className="relative"
+    >
+      <div className="sticky top-0 h-screen overflow-hidden supports-[height:100dvh]:h-[100dvh]">
         <motion.div style={{ x }} className="sticky">
-          <div className="relative h-screen w-[300vw]">
+          <div
+            style={{ width: imageWidth }}
+            className="relative h-screen supports-[height:100dvh]:h-[100dvh]"
+          >
             <Image
               src="/timeline_beztla_light.png"
               alt="Życie Piotra Drzewieckiego"
               ref={imageRef}
-              className="h-screen"
+              style={{ width: imageWidth }}
+              quality={100}
+              unoptimized
+              className="h-screen supports-[height:100dvh]:h-[100dvh]"
               priority
               loading="eager"
-              height={2000}
-              width={8425}
+              height={ACTUAL_IMAGE_HEIGHT / 4}
+              width={ACTUAL_IMAGE_WIDTH / 4}
             />
           </div>
         </motion.div>
