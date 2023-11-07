@@ -14,9 +14,9 @@ export default function Home() {
           content="Projekt o Piotrze Drzewieckim (byłym prezydencie Warszawy)"
         />
       </Head>
-      <main className="flex min-h-screen flex-col scroll-smooth bg-neutral-800 text-white supports-[height:100dvh]:min-h-[100dvh]">
-        <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-6 px-4 py-16 supports-[height:100dvh]:h-[100dvh] lg:flex-row lg:gap-12">
-          <h1 className="text-5xl font-bold sm:text-[6rem]">
+      <main className="flex min-h-screen flex-col scroll-smooth bg-[#373737] text-white supports-[height:100dvh]:min-h-[100dvh]">
+        <div className="container mx-auto flex h-screen flex-col-reverse items-center justify-center gap-6 p-16 supports-[height:100dvh]:h-[100dvh] lg:flex-row xl:gap-12">
+          <h1 className="text-5xl font-bold lg:text-[6rem]">
             Piotr Drzewiecki
           </h1>
           <Image
@@ -29,14 +29,33 @@ export default function Home() {
             className="rounded-xl border-4 border-white"
           />
         </div>
+        <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-6 p-16 supports-[height:100dvh]:h-[100dvh] lg:flex-row lg:gap-12">
+          <p className="text-2xl sm:text-3xl xl:text-4xl">
+            Piotr Drzewiecki po wejściu w skład Rady Regencyjnej Królestwa
+            Polskiego 22 marca 1918 został wybrany przez Radę Miejską
+            prezydentem stolicy. Funkcję tę sprawował do 28 listopada 1921. Był
+            prezydentem bardzo pracowitym, obowiązkowym i ofiarnym; z własnych
+            dochodów wypłacał nagrody pracownikom miejskim za dokonane przez
+            nich usprawnienia w pracy. Umiał także dość skutecznie
+            przeciwstawiać się nadmiernym żądaniom niemieckich okupantów. Jego
+            zasługą było też przyłączenie do miasta obszarów podmiejskich, co
+            stworzyło solidne podstawy rozwoju miasta w dobie II
+            Rzeczypospolitej.
+            <br />
+            <br />
+            Poniżej przedstawiamy na osi czasu bardziej prywatne i ukryte
+            informacje, które przedstawiają również Drzewieckiego jako wybitnego
+            polskiego inżyniera i technika z czasów 2 RP:
+          </p>
+        </div>
         <CalculateProportions />
       </main>
     </>
   );
 }
 
-const ACTUAL_IMAGE_WIDTH = 26000;
-const ACTUAL_IMAGE_HEIGHT = 4237;
+const ACTUAL_IMAGE_WIDTH = 6500;
+const ACTUAL_IMAGE_HEIGHT = 1059;
 
 function CalculateProportions() {
   const { innerHeight, innerWidth } = useWindowSize();
@@ -82,7 +101,7 @@ function HorizontalScroll({ imageWidth, innerWidth }: HorizontalScrollProps) {
             className="relative h-screen supports-[height:100dvh]:h-[100dvh]"
           >
             <Image
-              src="/timeline_beztla_light.png"
+              src="/timeline_v2.png"
               alt="Życie Piotra Drzewieckiego"
               ref={imageRef}
               style={{ width: imageWidth }}
@@ -91,8 +110,8 @@ function HorizontalScroll({ imageWidth, innerWidth }: HorizontalScrollProps) {
               className="h-screen supports-[height:100dvh]:h-[100dvh]"
               priority
               loading="eager"
-              height={ACTUAL_IMAGE_HEIGHT / 4}
-              width={ACTUAL_IMAGE_WIDTH / 4}
+              height={ACTUAL_IMAGE_HEIGHT}
+              width={ACTUAL_IMAGE_WIDTH}
             />
           </div>
         </motion.div>
