@@ -49,6 +49,22 @@ export default function Home() {
           </p>
         </div>
         <CalculateProportions />
+        <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-6 p-16 supports-[height:100dvh]:h-[100dvh] lg:flex-row lg:gap-12">
+          <div className="space-y-6">
+            <p className="text-2xl sm:text-3xl xl:text-4xl">
+              Projekt autorstwa uczniów z klasy 5PTA:
+            </p>
+            <ul className="list-disc space-y-3 pl-8 text-2xl sm:text-3xl xl:text-4xl">
+              <li>Łukasz Ciwoniuk</li>
+              <li>Karol Brodowicz</li>
+              <li>Jakub Bartoszewski</li>
+              <li>Marek Zawadzki</li>
+              <li>Aleksander Zeneli</li>
+              <li>Kacper Chrzanowski</li>
+              <li>Michał Sokół</li>
+            </ul>
+          </div>
+        </div>
       </main>
     </>
   );
