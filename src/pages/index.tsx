@@ -5,8 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useWindowSize } from "rooks";
 
 export default function Home() {
-  // TODO: CUSTOM FONT, BG COLOR, TEXT COLOR
-
   return (
     <>
       <Head>
@@ -15,8 +13,6 @@ export default function Home() {
           name="description"
           content="Projekt o Piotrze Drzewieckim (byłym prezydencie Warszawy)"
         />
-        {/* TODO: favicon zmienić */}
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col scroll-smooth bg-neutral-800 text-white supports-[height:100dvh]:min-h-[100dvh]">
         <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-6 px-4 py-16 supports-[height:100dvh]:h-[100dvh] lg:flex-row lg:gap-12">
