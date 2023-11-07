@@ -14,7 +14,7 @@ export default function Home() {
           content="Projekt o Piotrze Drzewieckim (byłym prezydencie Warszawy)"
         />
       </Head>
-      <main className="flex min-h-screen flex-col scroll-smooth bg-[#373737] text-white supports-[height:100dvh]:min-h-[100dvh]">
+      <main className="flex min-h-screen flex-col scroll-smooth bg-neutral-800 text-white supports-[height:100dvh]:min-h-[100dvh]">
         <div className="container mx-auto flex h-screen flex-col-reverse items-center justify-center gap-6 p-16 supports-[height:100dvh]:h-[100dvh] lg:flex-row xl:gap-12">
           <h1 className="text-5xl font-bold lg:text-[6rem]">
             Piotr Drzewiecki
@@ -101,7 +101,7 @@ function HorizontalScroll({ imageWidth, innerWidth }: HorizontalScrollProps) {
             className="relative h-screen supports-[height:100dvh]:h-[100dvh]"
           >
             <Image
-              src="/timeline_v2.png"
+              src="/timeline_v2_beztla.png"
               alt="Życie Piotra Drzewieckiego"
               ref={imageRef}
               style={{ width: imageWidth }}
